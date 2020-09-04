@@ -18,18 +18,36 @@
           >
             mdi-magnify
           </v-icon>
-          <h2 class="display-1 white--text font-weight-light">Title 1</h2>
+          <h3 class="white--text font-weight-light">{{ dishes[0].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
             <v-col cols="12" md="10">
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit.
+              {{ dishes[0].recipe}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
               md="2"
             >
-              <v-icon size="64">mdi-calendar-text</v-icon>
+            <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Ingredients
+            </v-card-title>
+            <v-card-text>
+              {{ dishes[0].ingredients}}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+    </div>            
             </v-col>
           </v-row>
         </v-container>
@@ -47,7 +65,7 @@
       </template>
       <v-card>
         <v-card-title class="amber lighten-1 justify-end">
-          <h2 class="display-1 mr-4 white--text font-weight-light">Title 2</h2>
+          <h3 class="mr-4 white--text font-weight-light">{{ dishes[1].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -55,8 +73,32 @@
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="8">
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit.
+            <v-col cols="12" md="10">
+              {{ dishes[1].recipe}}
+            </v-col>
+            <v-col
+              class="hidden-sm-and-down text-right"
+              md="2"
+            >
+                <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Ingredients
+            </v-card-title>
+            <v-card-text>
+              {{ dishes[1].ingredients}}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+    </div>
             </v-col>
           </v-row>
         </v-container> 
@@ -81,17 +123,36 @@
           >
             mdi-email-outline
           </v-icon>
-          <h2 class="display-1 white--text font-weight-light">Title 3</h2>
+          <h3 class="white--text font-weight-light">{{ dishes[2].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
+            <v-col cols="12" md="10">
+              {{ dishes[2].recipe}}
+            </v-col>
             <v-col
-              v-for="n in 3"
-              :key="n"
-              cols="12"
-              md="4"
+              class="hidden-sm-and-down text-right"
+              md="2"
             >
-              Lorem ipsum dolor sit amet, no nam oblique veritus no nam oblique.
+                <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Ingredients
+            </v-card-title>
+            <v-card-text>
+              {{ dishes[3].ingredients}}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+    </div>
             </v-col>
           </v-row>
         </v-container>
@@ -109,7 +170,7 @@
       </template>
       <v-card>
         <v-card-title class="red lighten-1 justify-end">
-          <h2 class="display-1 mr-4 white--text font-weight-light">Title 4</h2>
+          <h3 class="mr-4 white--text font-weight-light">{{ dishes[3].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -119,11 +180,32 @@
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col class="hidden-sm-and-down" md="2">
-              <v-icon size="64">mdi-server-network</v-icon>
-            </v-col>
             <v-col cols="12" md="10">
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus.
+              {{ dishes[3].recipe}}
+            </v-col>
+            <v-col
+              class="hidden-sm-and-down text-right"
+              md="2"
+            >
+                <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Ingredients
+            </v-card-title>
+            <v-card-text>
+              {{ dishes[4].ingredients}}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+    </div>
             </v-col>
           </v-row>
         </v-container>
@@ -148,12 +230,36 @@
           >
             mdi-phone-in-talk
           </v-icon>
-          <h2 class="display-1 white--text font-weight-light">Title 5</h2>
+          <h3 class="white--text font-weight-light">{{ dishes[4].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col>
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+            <v-col cols="12" md="10">
+              {{ dishes[4].recipe}}
+            </v-col>
+            <v-col
+              class="hidden-sm-and-down text-right"
+              md="2"
+            >
+                <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Ingredients
+            </v-card-title>
+            <v-card-text>
+              {{ dishes[5].ingredients}}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+    </div>
             </v-col>
           </v-row>
         </v-container>
@@ -171,7 +277,7 @@
       </template>
       <v-card>
         <v-card-title class="pink lighten-1 justify-end">
-          <h2 class="display-1 mr-4 white--text font-weight-light">Title 4</h2>
+          <h3 class="mr-4 white--text font-weight-light">{{ dishes[5].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -181,11 +287,32 @@
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col class="hidden-sm-and-down" md="2">
-              <v-icon size="64">mdi-server-network</v-icon>
-            </v-col>
             <v-col cols="12" md="10">
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus.
+              {{ dishes[5].recipe}}
+            </v-col>
+            <v-col
+              class="hidden-sm-and-down text-right"
+              md="2"
+            >
+                <div class="text-center">
+        <v-dialog
+          v-model="dialog"
+          width="500"
+        >
+          <template v-slot:activator="{ on, attrs }">
+          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline grey lighten-2">
+              Ingredients
+            </v-card-title>
+            <v-card-text>
+              {{ dishes[6].ingredients}}
+            </v-card-text>
+          </v-card>
+        </v-dialog>
+    </div>
             </v-col>
           </v-row>
         </v-container>
@@ -210,12 +337,18 @@
           >
             mdi-phone-in-talk
           </v-icon>
-          <h2 class="display-1 white--text font-weight-light">Title 5</h2>
+          <h3 class="white--text font-weight-light">{{ dishes[6].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col>
-              Lorem ipsum dolor sit amet, no nam oblique veritus. Commune scaevola imperdiet nec ut, sed euismod convenire principes at. Est et nobis iisque percipit, an vim zril disputando voluptatibus, vix an salutandi sententiae.
+            <v-col cols="12" md="10">
+              {{ dishes[6].recipe}}
+            </v-col>
+            <v-col
+              class="hidden-sm-and-down text-right"
+              md="2"
+            >
+              <v-icon size="64">mdi-calendar-text</v-icon>
             </v-col>
           </v-row>
         </v-container>
@@ -233,10 +366,12 @@ import { mapState } from 'vuex'
 export default {
     data: () => ({
         selectedDish: {},
+        dialog: false,
     }),
 
     mounted() {
       this.getDishes()
+      console.log(this.dishes)
     },
 
     computed: {
