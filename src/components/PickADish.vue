@@ -18,36 +18,40 @@
           >
             mdi-magnify
           </v-icon>
-          <h3 class="white--text font-weight-light">{{ dishes[0].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[0].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[0].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[0].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-            <div class="text-center">
-        <v-dialog
-          v-model="dialog"
-          width="500"
-        >
-          <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-          </template>
+            <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
+            <v-dialog
+              v-model="dialog"
+              width="500"
+            >
+              <template v-slot:activator="{ on, attrs }">
+              <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+              </template>
 
-          <v-card>
-            <v-card-title class="headline grey lighten-2">
-              Ingredients
-            </v-card-title>
-            <v-card-text>
-              {{ dishes[0].ingredients}}
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-    </div>            
+              <v-card>
+                <v-card-title class="headline grey lighten-2">
+                  <span>{{ dishes[0].dish_name}} - przepis</span>
+                </v-card-title>
+                <v-card-text>
+                  {{ dishes[0].recipe}}
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+            </div>            
             </v-col>
           </v-row>
         </v-container>
@@ -65,7 +69,7 @@
       </template>
       <v-card>
         <v-card-title class="amber lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-light">{{ dishes[1].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[1].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -73,14 +77,18 @@
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[1].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[1].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-                <div class="text-center">
+            <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
         <v-dialog
           v-model="dialog"
           width="500"
@@ -91,10 +99,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2">
-              Ingredients
+              <span>{{ dishes[1].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[1].ingredients}}
+              {{ dishes[1].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -123,18 +131,22 @@
           >
             mdi-email-outline
           </v-icon>
-          <h3 class="white--text font-weight-light">{{ dishes[2].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[2].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[2].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[2].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-                <div class="text-center">
+               <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
         <v-dialog
           v-model="dialog"
           width="500"
@@ -145,10 +157,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2">
-              Ingredients
+              <span>{{ dishes[2].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[3].ingredients}}
+              {{ dishes[3].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -170,7 +182,7 @@
       </template>
       <v-card>
         <v-card-title class="red lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-light">{{ dishes[3].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[3].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -180,14 +192,18 @@
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[3].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[3].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-                <div class="text-center">
+                <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
         <v-dialog
           v-model="dialog"
           width="500"
@@ -198,10 +214,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2">
-              Ingredients
+              <span>{{ dishes[3].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[4].ingredients}}
+              {{ dishes[4].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -230,18 +246,22 @@
           >
             mdi-phone-in-talk
           </v-icon>
-          <h3 class="white--text font-weight-light">{{ dishes[4].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[4].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[4].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[4].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-                <div class="text-center">
+                <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
         <v-dialog
           v-model="dialog"
           width="500"
@@ -252,10 +272,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2">
-              Ingredients
+              <span>{{ dishes[4].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[5].ingredients}}
+              {{ dishes[5].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -277,7 +297,7 @@
       </template>
       <v-card>
         <v-card-title class="pink lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-light">{{ dishes[5].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[5].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -287,14 +307,18 @@
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[5].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[5].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-                <div class="text-center">
+               <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
         <v-dialog
           v-model="dialog"
           width="500"
@@ -305,10 +329,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2">
-              Ingredients
+              <span>{{ dishes[5].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[6].ingredients}}
+              {{ dishes[6].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -337,18 +361,40 @@
           >
             mdi-phone-in-talk
           </v-icon>
-          <h3 class="white--text font-weight-light">{{ dishes[6].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[6].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
-            <v-col cols="12" md="10">
-              {{ dishes[6].recipe}}
+            <v-col cols="12" md="8">
+              <h3>Składniki</h3>
+              <v-divider class="my-2"></v-divider>
+              {{ dishes[6].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
-              md="2"
+              md="4"
             >
-              <v-icon size="64">mdi-calendar-text</v-icon>
+            <h3 class="align-right">Przepis</h3>
+              <v-divider class="my-2"></v-divider>
+            <div class="align-right">
+            <v-dialog
+              v-model="dialog"
+              width="500"
+            >
+              <template v-slot:activator="{ on, attrs }">
+              <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+              </template>
+
+              <v-card>
+                <v-card-title class="headline grey lighten-2">
+                  <span>{{ dishes[6].dish_name}} - przepis</span>
+                </v-card-title>
+                <v-card-text>
+                  {{ dishes[6].recipe}}
+                </v-card-text>
+              </v-card>
+            </v-dialog>
+          </div>
             </v-col>
           </v-row>
         </v-container>
