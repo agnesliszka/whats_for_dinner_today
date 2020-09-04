@@ -6,23 +6,23 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    events: []
+    dishes: []
   },
   mutations: {
-    setEvents: (state, events) => {
-      state.events = events
+    setDishes: (state, dishes) => {
+      state.dishes = dishes
     }
   },
   actions: {
-    setEvents: async context => {
-      let snapshot = await db.collection('calEvent').get()
-      const events = []
+    setDishes: async context => {
+      let snapshot = await db.collection('dishes').get()
+      const dishes = []
       snapshot.forEach(doc => {
         let appData = doc.data()
         appData.id = doc.id
-        events.push(appData)
+        dishes.push(appData)
       })
-      context.commit('setEvents', events)
+      context.commit('setDishes', dishes)
     }
   }
 })

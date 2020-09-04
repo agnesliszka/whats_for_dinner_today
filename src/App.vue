@@ -15,7 +15,7 @@ export default {
     PickADish,
   },
   data: () => ({
-    //
+    
   }),
 };
 </script>
