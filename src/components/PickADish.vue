@@ -35,22 +35,22 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
             <v-dialog
-              v-model="dialog"
+              v-model="dialog0"
               width="500"
             >
-              <template v-slot:activator="{ on, attrs }">
-              <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
+              <template v-slot:activator="{ on }">
+              <v-icon v-on="on" size="64">mdi-calendar-text</v-icon>
               </template>
 
               <v-card>
-                <v-card-title class="headline grey lighten-2">
+                <v-card-title class="headline grey lighten-2 mb-4">
                   <span>{{ dishes[0].dish_name}} - przepis</span>
                 </v-card-title>
                 <v-card-text>
                   {{ dishes[0].recipe}}
                 </v-card-text>
-              </v-card>
-            </v-dialog>
+              </v-card> 
+            </v-dialog> 
             </div>            
             </v-col>
           </v-row>
@@ -90,7 +90,7 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
         <v-dialog
-          v-model="dialog"
+          v-model="dialog1"
           width="500"
         >
           <template v-slot:activator="{ on, attrs }">
@@ -98,7 +98,7 @@
           </template>
 
           <v-card>
-            <v-card-title class="headline grey lighten-2">
+            <v-card-title class="headline grey lighten-2 mb-4">
               <span>{{ dishes[1].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
@@ -148,7 +148,7 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
         <v-dialog
-          v-model="dialog"
+          v-model="dialog2"
           width="500"
         >
           <template v-slot:activator="{ on, attrs }">
@@ -156,7 +156,7 @@
           </template>
 
           <v-card>
-            <v-card-title class="headline grey lighten-2">
+            <v-card-title class="headline grey lighten-2 mb-4">
               <span>{{ dishes[2].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
@@ -205,7 +205,7 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
         <v-dialog
-          v-model="dialog"
+          v-model="dialog3"
           width="500"
         >
           <template v-slot:activator="{ on, attrs }">
@@ -213,7 +213,7 @@
           </template>
 
           <v-card>
-            <v-card-title class="headline grey lighten-2">
+            <v-card-title class="headline grey lighten-2 mb-4">
               <span>{{ dishes[3].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
@@ -263,7 +263,7 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
         <v-dialog
-          v-model="dialog"
+          v-model="dialog4"
           width="500"
         >
           <template v-slot:activator="{ on, attrs }">
@@ -271,7 +271,7 @@
           </template>
 
           <v-card>
-            <v-card-title class="headline grey lighten-2">
+            <v-card-title class="headline grey lighten-2 mb-4">
               <span>{{ dishes[4].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
@@ -320,7 +320,7 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
         <v-dialog
-          v-model="dialog"
+          v-model="dialog5"
           width="500"
         >
           <template v-slot:activator="{ on, attrs }">
@@ -328,7 +328,7 @@
           </template>
 
           <v-card>
-            <v-card-title class="headline grey lighten-2">
+            <v-card-title class="headline grey lighten-2 mb-4">
               <span>{{ dishes[5].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
@@ -378,7 +378,7 @@
               <v-divider class="my-2"></v-divider>
             <div class="align-right">
             <v-dialog
-              v-model="dialog"
+              v-model="dialog6"
               width="500"
             >
               <template v-slot:activator="{ on, attrs }">
@@ -386,7 +386,7 @@
               </template>
 
               <v-card>
-                <v-card-title class="headline grey lighten-2">
+                <v-card-title class="headline grey lighten-2 mb-4">
                   <span>{{ dishes[6].dish_name}} - przepis</span>
                 </v-card-title>
                 <v-card-text>
@@ -412,11 +412,18 @@ import { mapState } from 'vuex'
 export default {
     data: () => ({
         selectedDish: {},
-        dialog: false,
+        dialog0: false,
+        dialog1: false,
+        dialog2: false,
+        dialog3: false,
+        dialog4: false,
+        dialog5: false,
+        dialog6: false,
     }),
 
     mounted() {
       this.getDishes()
+      console.log("@this.dishes")
       console.log(this.dishes)
     },
 
