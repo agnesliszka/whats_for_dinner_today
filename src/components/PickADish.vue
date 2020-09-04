@@ -7,7 +7,7 @@
       class="mr-7"
     >
     <template v-slot:opposite>
-        <span>Monday</span>
+        <h1>Monday</h1>
       </template>
       <v-card>
         <v-card-title class="purple lighten-2">
@@ -65,7 +65,7 @@
       class="ml-7"
     >
      <template v-slot:opposite>
-        <span>Tuesday</span>
+        <h1>Tuesday</h1>
       </template>
       <v-card>
         <v-card-title class="amber lighten-1 justify-end">
@@ -120,7 +120,7 @@
       class="mr-7"
     >
      <template v-slot:opposite>
-        <span>Wednesday</span>
+        <h1>Wednesday</h1>
       </template>
       <v-card>
         <v-card-title class="cyan lighten-1">
@@ -178,7 +178,7 @@
       class="ml-7"
     >
      <template v-slot:opposite>
-        <span>Thursday</span>
+        <h1>Thursday</h1>
       </template>
       <v-card>
         <v-card-title class="red lighten-1 justify-end">
@@ -235,7 +235,7 @@
       class="mr-7"
     >
      <template v-slot:opposite>
-        <span>Friday</span>
+        <h1>Friday</h1>
       </template>
       <v-card>
         <v-card-title class="green lighten-1">
@@ -293,7 +293,7 @@
       class="ml-7"
     >
      <template v-slot:opposite>
-        <span>Saturday</span>
+        <h1>Saturday</h1>
       </template>
       <v-card>
         <v-card-title class="pink lighten-1 justify-end">
@@ -350,7 +350,7 @@
       class="mr-7"
     >
      <template v-slot:opposite>
-        <span>Sunday</span>
+        <h1>Sunday</h1>
       </template>
       <v-card>
         <v-card-title class="yellow">
