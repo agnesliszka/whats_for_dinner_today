@@ -1,5 +1,12 @@
 <template>
-  <v-timeline :dense="$vuetify.breakpoint.smAndDown">
+ 
+ <div> 
+    <div v-if="!dataLoaded">
+   <h1>Loading data...</h1>
+ </div>
+
+<div v-if="dataLoaded">
+ <v-timeline :dense="$vuetify.breakpoint.smAndDown">
     <v-timeline-item
       color="purple lighten-2"
       fill-dot
@@ -18,14 +25,14 @@
           >
             mdi-magnify
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[0].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[0]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[0].ingredients}}
+              {{ dishes[dishesIndexList[0]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -44,10 +51,10 @@
 
               <v-card>
                 <v-card-title class="headline grey lighten-2 mb-4">
-                  <span>{{ dishes[0].dish_name}} - przepis</span>
+                  <span>{{ dishes[dishesIndexList[0]].dish_name}} - przepis</span>
                 </v-card-title>
                 <v-card-text>
-                  {{ dishes[0].recipe}}
+                  {{ dishes[dishesIndexList[0]].recipe}}
                 </v-card-text>
               </v-card> 
             </v-dialog> 
@@ -69,7 +76,7 @@
       </template>
       <v-card>
         <v-card-title class="amber lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[1].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[dishesIndexList[1]].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -80,7 +87,7 @@
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[1].ingredients}}
+              {{ dishes[dishesIndexList[1]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -99,10 +106,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[1].dish_name}} - przepis</span>
+              <span>{{ dishes[dishesIndexList[1]].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[1].recipe}}
+              {{ dishes[dishesIndexList[1]].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -131,14 +138,14 @@
           >
             mdi-email-outline
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[2].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[2]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[2].ingredients}}
+              {{ dishes[dishesIndexList[2]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -157,10 +164,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[2].dish_name}} - przepis</span>
+              <span>{{ dishes[dishesIndexList[2]].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[3].recipe}}
+              {{ dishes[dishesIndexList[2]].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -182,7 +189,7 @@
       </template>
       <v-card>
         <v-card-title class="red lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[3].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[dishesIndexList[3]].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -195,7 +202,7 @@
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[3].ingredients}}
+              {{ dishes[dishesIndexList[3]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -214,10 +221,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[3].dish_name}} - przepis</span>
+              <span>{{ dishes[dishesIndexList[3]].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[4].recipe}}
+              {{ dishes[dishesIndexList[3]].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -246,14 +253,14 @@
           >
             mdi-phone-in-talk
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[4].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[4]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[4].ingredients}}
+              {{ dishes[dishesIndexList[4]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -272,10 +279,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[4].dish_name}} - przepis</span>
+              <span>{{ dishes[dishesIndexList[4]].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[5].recipe}}
+              {{ dishes[dishesIndexList[4]].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -297,7 +304,7 @@
       </template>
       <v-card>
         <v-card-title class="pink lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[5].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[dishesIndexList[5]].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -310,7 +317,7 @@
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[5].ingredients}}
+              {{ dishes[dishesIndexList[5]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -329,10 +336,10 @@
 
           <v-card>
             <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[5].dish_name}} - przepis</span>
+              <span>{{ dishes[dishesIndexList[5]].dish_name}} - przepis</span>
             </v-card-title>
             <v-card-text>
-              {{ dishes[6].recipe}}
+              {{ dishes[dishesIndexList[5]].recipe}}
             </v-card-text>
           </v-card>
         </v-dialog>
@@ -361,14 +368,14 @@
           >
             mdi-phone-in-talk
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[6].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[6]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
             <v-col cols="12" md="8">
               <h3>Składniki</h3>
               <v-divider class="my-2"></v-divider>
-              {{ dishes[6].ingredients}}
+              {{ dishes[dishesIndexList[6]].ingredients}}
             </v-col>
             <v-col
               class="hidden-sm-and-down text-right"
@@ -387,10 +394,10 @@
 
               <v-card>
                 <v-card-title class="headline grey lighten-2 mb-4">
-                  <span>{{ dishes[6].dish_name}} - przepis</span>
+                  <span>{{ dishes[dishesIndexList[6]].dish_name}} - przepis</span>
                 </v-card-title>
                 <v-card-text>
-                  {{ dishes[6].recipe}}
+                  {{ dishes[dishesIndexList[6]].recipe}}
                 </v-card-text>
               </v-card>
             </v-dialog>
@@ -401,7 +408,8 @@
       </v-card>
     </v-timeline-item>
   </v-timeline>
-  
+  </div>
+ </div>
 </template>
 
 
@@ -419,12 +427,12 @@ export default {
         dialog4: false,
         dialog5: false,
         dialog6: false,
+        dishesIndexList: [],
+        dataLoaded: false,
     }),
 
-    mounted() {
-      this.getDishes()
-      console.log("@this.dishes")
-      console.log(this.dishes)
+     mounted() {
+      this.getDishIndexList()
     },
 
     computed: {
@@ -434,23 +442,27 @@ export default {
     },
 
     methods: {
-        getDishes() {
-          this.$store.dispatch('setDishes')
+        async getDishes() {
+          await this.$store.dispatch('setDishes')
         },
+        
         editDish(ev) {
             this.currentlyEditing = ev.id
           },
+
           updateDish(ev) {
             db.collection('dishes').doc(this.currentlyEditing).update({
               details: ev.details
             })
             this.currentlyEditing = null
           },
+
           async deleteDish(ev) {
             await db.collection('dishes').doc(ev).delete()
             this.selectedOpen = false,
             this.getDishes()
           },
+
           showDish({ nativeEvent, dish }) {
             const open = () => {
               this.selectedDish = dish
@@ -465,7 +477,33 @@ export default {
             }
             nativeEvent.stopPropagation()
           },
-    }
+          
+          pickADishIndexForEachDay(){
+            const numberOfDishes = this.dishes.length
+
+            const numbersArr = [];
+
+            for ( let i = 0; i < numberOfDishes; i++ ) { 
+              numbersArr.push(i);
+            }
+
+            while (this.dishesIndexList.length < 7){
+              var randomIndex = Math.floor(Math.random() * numbersArr.length);
+              this.dishesIndexList.push(numbersArr[randomIndex]);
+              numbersArr.splice(randomIndex, 1);
+            }
+
+            this.dataLoaded = true;
+            return this.dishesIndexList;
+            },  
+
+       async getDishIndexList(){
+
+              await this.getDishes()
+              this.pickADishIndexForEachDay()
+            },
+           
+      },
 }
     
 
