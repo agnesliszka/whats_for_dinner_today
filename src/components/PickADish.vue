@@ -38,14 +38,14 @@
         <h1>Monday</h1>
       </template>
       <v-card>
-        <v-card-title class="purple lighten-2">
-          <v-icon
+        <v-card-title class="purple lighten-2">   
+           <v-icon
             dark
             size="42"
             class="mr-4"
           >
-            mdi-magnify
-          </v-icon>
+            fas fa-egg
+          </v-icon>  
           <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[0]].dish_name}}</h3>
         </v-card-title>
         <v-container>
@@ -101,7 +101,7 @@
           <v-icon
             dark
             size="42"
-          >mdi-home-outline</v-icon>
+          >fas fa-drumstick-bite</v-icon>
         </v-card-title>
         <v-container>
           <v-row>
@@ -157,7 +157,7 @@
             dark
             size="42"
           >
-            mdi-email-outline
+            fas fa-pizza-slice
           </v-icon>
           <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[2]].dish_name}}</h3>
         </v-card-title>
@@ -215,7 +215,7 @@
             dark
             size="42"
           >
-            mdi-account-multiple-outline
+            fas fa-hamburger
           </v-icon>
         </v-card-title>
         <v-container>
@@ -272,7 +272,7 @@
             dark
             size="42"
           >
-            mdi-phone-in-talk
+            fas fa-fish
           </v-icon>
           <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[4]].dish_name}}</h3>
         </v-card-title>
@@ -330,7 +330,7 @@
             dark
             size="42"
           >
-            mdi-account-multiple-outline
+            fas fa-hotdog
           </v-icon>
         </v-card-title>
         <v-container>
@@ -387,7 +387,7 @@
             dark
             size="42"
           >
-            mdi-phone-in-talk
+            fas fa-carrot
           </v-icon>
           <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[6]].dish_name}}</h3>
         </v-card-title>
@@ -450,6 +450,10 @@ export default {
         dialog6: false,
         dishesIndexList: [],
         dataLoaded: false,
+        // cooked_meat_dish: "fas fa-egg",
+        // fried_meat_dish: "fas fa-drumstick-bite",
+        // baked_meat_dish: "fas fa-pizza-slice",
+        // vegetarian_dish: "fas fa-carrot"
     }),
 
      mounted() {
