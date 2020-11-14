@@ -30,6 +30,15 @@
     </v-container>
  </div>
  <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
+   <!-- // get height of each element  -->
+   <!-- <v-lazy
+          v-model="isActive"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        > -->
     <v-timeline-item
       color="purple lighten-2"
       fill-dot
@@ -86,6 +95,7 @@
         </v-container>
       </v-card>
     </v-timeline-item>
+    <!-- </v-lazy> -->
 
     <v-timeline-item
       color="amber lighten-1"

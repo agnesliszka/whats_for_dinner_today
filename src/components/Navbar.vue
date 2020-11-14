@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-    <div class="container">
-      <router-link to="/" class="navbar-brand">Pick up dish appplication</router-link>
+  <nav class="navbar navbar-expand-md navbar-light navbar-laravel alert-success">
+    <div class="container ">
+      <router-link to="/" class="navbar-brand">Pick a dish appplication</router-link>
       <button
         class="navbar-toggler"
         type="button"
