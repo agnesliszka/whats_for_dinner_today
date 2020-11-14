@@ -27,9 +27,9 @@
  </div>
 
 <div v-if="dataLoaded">
-<!-- <div class="card-body">
+<div class="card-body">
   <div v-if="user" class="alert alert-success" role="alert">You are logged in!</div>
-</div> -->
+</div>
  <v-timeline :dense="$vuetify.breakpoint.smAndDown">
     <v-timeline-item
       color="purple lighten-2"
