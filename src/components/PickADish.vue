@@ -48,7 +48,7 @@
           >
             fas fa-egg
           </v-icon>  
-          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[0]].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[0]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
@@ -98,7 +98,7 @@
       </template>
       <v-card>
         <v-card-title class="amber lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[dishesIndexList[1]].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[1]].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -159,7 +159,7 @@
           >
             fas fa-pizza-slice
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[2]].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[2]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
@@ -209,7 +209,7 @@
       </template>
       <v-card>
         <v-card-title class="red lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[dishesIndexList[3]].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[3]].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -272,7 +272,7 @@
           >
             fas fa-fish
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[4]].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[4]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
@@ -322,7 +322,7 @@
       </template>
       <v-card>
         <v-card-title class="pink lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium">{{ dishes[dishesIndexList[5]].dish_name}}</h3>
+          <h3 class="mr-4 white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[5]].dish_name}}</h3>
           <v-icon
             dark
             size="42"
@@ -385,7 +385,7 @@
           >
             fas fa-carrot
           </v-icon>
-          <h3 class="white--text font-weight-medium">{{ dishes[dishesIndexList[6]].dish_name}}</h3>
+          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[6]].dish_name}}</h3>
         </v-card-title>
         <v-container>
           <v-row>
