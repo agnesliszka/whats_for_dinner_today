@@ -96,9 +96,6 @@ export default {
               displayName: this.form.name
             })
             .then(() => { this.$router.push('/login')});
-            // .then(data => {
-            // this.$router.replace({ name: "pickADish" });
-        // })
         })
         .catch(err => {
           this.error = err.message;

@@ -1,5 +1,9 @@
 <template>
  
+<div v-if="dataLoaded">
+<div class="card-body">
+  <div v-if="user" class="alert alert-info" role="alert">You are logged in!</div>
+</div>
  <div> 
     <div v-if="!dataLoaded">
       <v-container style="height: 400px;">
@@ -25,11 +29,6 @@
       </v-row>
     </v-container>
  </div>
-
-<div v-if="dataLoaded">
-<div class="card-body">
-  <div v-if="user" class="alert alert-success" role="alert">You are logged in!</div>
-</div>
  <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
     <v-timeline-item
       color="purple lighten-2"
@@ -431,7 +430,7 @@
 
 
 <script>
-import { db } from '@/main'
+// import { db } from '@/main'
 import { mapState } from 'vuex'
 import { mapGetters } from "vuex";
 
@@ -469,63 +468,60 @@ export default {
           await this.$store.dispatch('setDishes')
         },
         
-        editDish(ev) {
-            this.currentlyEditing = ev.id
-          },
+        pickADishIndexForEachDay(){
+          const numberOfDishes = this.dishes.length
+          const numbersArr = [];
 
-          updateDish(ev) {
-            db.collection('dishes').doc(this.currentlyEditing).update({
-              details: ev.details
-            })
-            this.currentlyEditing = null
-          },
+          for ( let i = 0; i < numberOfDishes; i++ ) { 
+            numbersArr.push(i);
+          }
 
-          async deleteDish(ev) {
-            await db.collection('dishes').doc(ev).delete()
-            this.selectedOpen = false,
-            this.getDishes()
-          },
+          while (this.dishesIndexList.length < 7){
+            var randomIndex = Math.floor(Math.random() * numbersArr.length);
+            this.dishesIndexList.push(numbersArr[randomIndex]);
+            numbersArr.splice(randomIndex, 1);
+          }
 
-          showDish({ nativeEvent, dish }) {
-            const open = () => {
-              this.selectedDish = dish
-              this.selectedElement = nativeEvent.target
-              setTimeout(() => this.selectedOpen = true, 10)
-            }
-            if (this.selectedOpen) {
-              this.selectedOpen = false
-              setTimeout(open, 10)
-            } else {
-              open()
-            }
-            nativeEvent.stopPropagation()
-          },
-          
-          pickADishIndexForEachDay(){
-            const numberOfDishes = this.dishes.length
+          this.dataLoaded = true;
+          return this.dishesIndexList;
+          },  
 
-            const numbersArr = [];
+        async getDishIndexList(){
+            await this.getDishes()
+            this.pickADishIndexForEachDay()
+          }, 
 
-            for ( let i = 0; i < numberOfDishes; i++ ) { 
-              numbersArr.push(i);
-            }
+        // editDish(ev) {
+        //     this.currentlyEditing = ev.id
+        //   },
 
-            while (this.dishesIndexList.length < 7){
-              var randomIndex = Math.floor(Math.random() * numbersArr.length);
-              this.dishesIndexList.push(numbersArr[randomIndex]);
-              numbersArr.splice(randomIndex, 1);
-            }
+        // updateDish(ev) {
+        //   db.collection('dishes').doc(this.currentlyEditing).update({
+        //     details: ev.details
+        //   })
+        //   this.currentlyEditing = null
+        // },
 
-            this.dataLoaded = true;
-            return this.dishesIndexList;
-            },  
+        // async deleteDish(ev) {
+        //   await db.collection('dishes').doc(ev).delete()
+        //   this.selectedOpen = false,
+        //   this.getDishes()
+        // },
 
-       async getDishIndexList(){
-
-              await this.getDishes()
-              this.pickADishIndexForEachDay()
-            },
-           
+        // showDish({ nativeEvent, dish }) {
+        //   const open = () => {
+        //     this.selectedDish = dish
+        //     this.selectedElement = nativeEvent.target
+        //     setTimeout(() => this.selectedOpen = true, 10)
+        //   }
+        //   if (this.selectedOpen) {
+        //     this.selectedOpen = false
+        //     setTimeout(open, 10)
+        //   } else {
+        //     open()
+        //   }
+        //   nativeEvent.stopPropagation()
+        // },
       },
 }
 </script>
