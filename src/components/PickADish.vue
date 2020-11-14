@@ -27,6 +27,9 @@
  </div>
 
 <div v-if="dataLoaded">
+<!-- <div class="card-body">
+  <div v-if="user" class="alert alert-success" role="alert">You are logged in!</div>
+</div> -->
  <v-timeline :dense="$vuetify.breakpoint.smAndDown">
     <v-timeline-item
       color="purple lighten-2"
@@ -437,6 +440,7 @@
 <script>
 import { db } from '@/main'
 import { mapState } from 'vuex'
+import { mapGetters } from "vuex";
 
 export default {
     data: () => ({
@@ -456,7 +460,7 @@ export default {
         // vegetarian_dish: "fas fa-carrot"
     }),
 
-     mounted() {
+    mounted() {
       this.getDishIndexList()
     },
 
@@ -464,6 +468,10 @@ export default {
         ...mapState([
           'dishes'
         ]),
+    ...mapGetters({
+      user: "user"
+    })
+  
     },
 
     methods: {

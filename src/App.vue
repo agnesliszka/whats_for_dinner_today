@@ -1,18 +1,20 @@
 <template>
-  <v-app>
-    <v-content>
-      <PickADish/>
-    </v-content>
+  <div>
+    <v-app>
+      <v-content>
+        <navbar></navbar>
+        <router-view></router-view>
+      </v-content>
   </v-app>
+  </div>
 </template>
 
 <script>
-import PickADish from './components/PickADish';
-
+import navbar from "./components/Navbar";
 export default {
-  name: 'App',
+  name:'App',
   components: {
-    PickADish,
+    navbar,
   },
   data: () => ({
     

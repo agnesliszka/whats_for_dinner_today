@@ -1,5 +1,9 @@
+import '@babel/polyfill'
+import 'mutationobserver-shim'
 import Vue from 'vue'
+import './plugins/bootstrap-vue'
 import App from './App.vue'
+import router from "./routes/index";
 import store from './store'
 import vuetify from './plugins/vuetify'
 import firebase from "firebase"
@@ -21,7 +25,12 @@ firebase.initializeApp({
 
 export const db = firebase.firestore()
 
+firebase.auth().onAuthStateChanged(user => {
+  store.dispatch("fetchUser", user);
+});
+
 new Vue({
+  router,
   store,
   vuetify,
   render: h => h(App)
