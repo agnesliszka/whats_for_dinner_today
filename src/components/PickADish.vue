@@ -30,12 +30,11 @@
 <div class="card-body">
   <div v-if="user" class="alert alert-success" role="alert">You are logged in!</div>
 </div>
- <v-timeline :dense="$vuetify.breakpoint.smAndDown">
+ <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
     <v-timeline-item
       color="purple lighten-2"
       fill-dot
       right
-      class="mr-7"
     >
     <template v-slot:opposite>
         <h1>Monday</h1>
@@ -93,7 +92,6 @@
       color="amber lighten-1"
       fill-dot
       left
-      class="ml-7"
     >
      <template v-slot:opposite>
         <h1>Tuesday</h1>
@@ -148,7 +146,6 @@
       color="cyan lighten-1"
       fill-dot
       right
-      class="mr-7"
     >
      <template v-slot:opposite>
         <h1>Wednesday</h1>
@@ -206,7 +203,6 @@
       color="red lighten-1"
       fill-dot
       left
-      class="ml-7"
     >
      <template v-slot:opposite>
         <h1>Thursday</h1>
@@ -263,7 +259,6 @@
       color="green lighten-1"
       fill-dot
       right
-      class="mr-7"
     >
      <template v-slot:opposite>
         <h1>Friday</h1>
@@ -321,7 +316,6 @@
       color="pink lighten-1"
       fill-dot
       left
-      class="ml-7"
     >
      <template v-slot:opposite>
         <h1>Saturday</h1>
@@ -378,7 +372,6 @@
       color="yellow"
       fill-dot
       right
-      class="mr-7"
     >
      <template v-slot:opposite>
         <h1>Sunday</h1>
@@ -454,10 +447,7 @@ export default {
         dialog6: false,
         dishesIndexList: [],
         dataLoaded: false,
-        // cooked_meat_dish: "fas fa-egg",
-        // fried_meat_dish: "fas fa-drumstick-bite",
-        // baked_meat_dish: "fas fa-pizza-slice",
-        // vegetarian_dish: "fas fa-carrot"
+        isActive: false,
     }),
 
     mounted() {
