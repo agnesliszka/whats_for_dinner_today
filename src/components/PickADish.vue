@@ -481,15 +481,36 @@ export default {
         pickADishIndexForEachDay(){
           const numberOfDishes = this.dishes.length
           const numbersArr = [];
+          // const vegetarianNumArray0 = []
+          const vegetarianNumArray = []
 
+          // get indexes number of all dishes
           for ( let i = 0; i < numberOfDishes; i++ ) { 
             numbersArr.push(i);
           }
 
+          // get indexes number of vegetarian dishes
+          // for ( let i = 0; i < numberOfDishes; i++ ) { 
+          //   if ( this.dishes[i].dish_type === "vegetarian_dish")
+          //   vegetarianNumArray0.push(i);
+          // }
+          // console.log("@vegetarianNumArray0")
+          // console.log(vegetarianNumArray0)
+
+          this.dishes.forEach((dish, index) =>  {
+            if (dish.dish_type === "vegetarian_dish"){
+              vegetarianNumArray.push(index)
+            }
+          })
+          console.log("@vegetarianNumArray")
+          console.log(vegetarianNumArray)
+
           while (this.dishesIndexList.length < 7){
-            var randomIndex = Math.floor(Math.random() * numbersArr.length);
+            const randomIndex = Math.floor(Math.random() * numbersArr.length);
+            console.log(randomIndex)
             this.dishesIndexList.push(numbersArr[randomIndex]);
             numbersArr.splice(randomIndex, 1);
+            console.log(this.dishesIndexList)
           }
 
           this.dataLoaded = true;
