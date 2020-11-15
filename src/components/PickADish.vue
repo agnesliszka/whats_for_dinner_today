@@ -480,38 +480,43 @@ export default {
         
         pickADishIndexForEachDay(){
           const numberOfDishes = this.dishes.length
-          const numbersArr = [];
-          // const vegetarianNumArray0 = []
-          const vegetarianNumArray = []
-
-          // get indexes number of all dishes
+          const dishIndexNumbers = [];
+          // const vegetarianDishIndexNumbers0 = []
+          const vegetarianDishIndexNumbers = []
+          
+          // Get indexes numbers of all dishes
           for ( let i = 0; i < numberOfDishes; i++ ) { 
-            numbersArr.push(i);
+            dishIndexNumbers.push(i);
           }
-
-          // get indexes number of vegetarian dishes
+         
           // for ( let i = 0; i < numberOfDishes; i++ ) { 
           //   if ( this.dishes[i].dish_type === "vegetarian_dish")
-          //   vegetarianNumArray0.push(i);
+          //   vegetarianDishIndexNumbers0.push(i);
           // }
-          // console.log("@vegetarianNumArray0")
-          // console.log(vegetarianNumArray0)
+          // console.log("@vegetarianDishIndexNumbers0")
+          // console.log(vegetarianDishIndexNumbers0)
 
+          // Get indexes number of vegetarian dishes
           this.dishes.forEach((dish, index) =>  {
             if (dish.dish_type === "vegetarian_dish"){
-              vegetarianNumArray.push(index)
+              vegetarianDishIndexNumbers.push(index)
             }
           })
-          console.log("@vegetarianNumArray")
-          console.log(vegetarianNumArray)
-
+          
+          const randomVegetarianDishIndexNumber = vegetarianDishIndexNumbers[Math.floor(Math.random() * (vegetarianDishIndexNumbers.length))];
+                    
+          // Add indexes for Monday to Sunday
           while (this.dishesIndexList.length < 7){
-            const randomIndex = Math.floor(Math.random() * numbersArr.length);
-            console.log(randomIndex)
-            this.dishesIndexList.push(numbersArr[randomIndex]);
-            numbersArr.splice(randomIndex, 1);
-            console.log(this.dishesIndexList)
+            const randomDishIndex = dishIndexNumbers[Math.floor(Math.random() * dishIndexNumbers.length)];
+            if(dishIndexNumbers[randomDishIndex] !==  randomVegetarianDishIndexNumber){     
+            this.dishesIndexList.push(randomDishIndex);
+            dishIndexNumbers.splice(randomDishIndex, 1);
+            }
+            else continue
+         
           }
+          //Replace index for Friday
+          this.dishesIndexList.splice(4, 1, randomVegetarianDishIndexNumber);    
 
           this.dataLoaded = true;
           return this.dishesIndexList;
