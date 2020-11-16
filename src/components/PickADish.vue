@@ -101,7 +101,7 @@
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
         >
     <v-timeline-item
@@ -163,7 +163,7 @@
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
         >
     <v-timeline-item
@@ -228,7 +228,7 @@
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
         >
     <v-timeline-item
@@ -292,7 +292,7 @@
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
         >
     <v-timeline-item
@@ -357,7 +357,7 @@
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
         >
     <v-timeline-item
@@ -421,7 +421,7 @@
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
         >
         <v-timeline-item
