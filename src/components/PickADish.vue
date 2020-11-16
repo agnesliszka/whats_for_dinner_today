@@ -31,14 +31,14 @@
  </div>
  <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
    <!-- // get height of each element  -->
-   <!-- <v-lazy
-          v-model="isActive"
+   <v-lazy
+          v-model="isActiveMonday"
           :options="{
             threshold: .5
           }"
-          min-height="300"
+          min-height="200"
           transition="fade-transition"
-        > -->
+        >
     <v-timeline-item
       color="purple lighten-2"
       fill-dot
@@ -95,8 +95,15 @@
         </v-container>
       </v-card>
     </v-timeline-item>
-    <!-- </v-lazy> -->
-
+    </v-lazy>
+    <v-lazy
+          v-model="isActiveTuesday"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        >
     <v-timeline-item
       color="amber lighten-1"
       fill-dot
@@ -150,7 +157,15 @@
         </v-container> 
       </v-card>
     </v-timeline-item>
-
+    </v-lazy>
+    <v-lazy
+          v-model="isActiveWednesday"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        >
     <v-timeline-item
       color="cyan lighten-1"
       fill-dot
@@ -207,7 +222,15 @@
         </v-container>
       </v-card>
     </v-timeline-item>
-
+</v-lazy>
+<v-lazy
+          v-model="isActiveThursday"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        >
     <v-timeline-item
       color="red lighten-1"
       fill-dot
@@ -263,7 +286,15 @@
         </v-container>
       </v-card>
     </v-timeline-item>
-
+</v-lazy>
+ <v-lazy
+          v-model="isActiveFriday"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        >
     <v-timeline-item
       color="green lighten-1"
       fill-dot
@@ -320,7 +351,15 @@
         </v-container>
       </v-card>
     </v-timeline-item>
-    
+    </v-lazy>
+    <v-lazy
+          v-model="isActiveSaturday"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        >
     <v-timeline-item
       color="pink lighten-1"
       fill-dot
@@ -376,7 +415,15 @@
         </v-container>
       </v-card>
     </v-timeline-item>
-    
+        </v-lazy>
+    <v-lazy
+          v-model="isActiveSunday"
+          :options="{
+            threshold: .5
+          }"
+          min-height="300"
+          transition="fade-transition"
+        >
         <v-timeline-item
       color="yellow"
       fill-dot
@@ -433,6 +480,7 @@
         </v-container>
       </v-card>
     </v-timeline-item>
+    </v-lazy>
   </v-timeline>
   </div>
  </div>
@@ -456,7 +504,13 @@ export default {
         dialog6: false,
         dishesIndexList: [],
         dataLoaded: false,
-        isActive: false,
+        isActiveMonday: false,
+        isActiveTuesday: false,
+        isActiveWednesday: false,
+        isActiveThursday: false,
+        isActiveFriday: false,
+        isActiveSaturday: false,
+        isActiveSunday: false,
     }),
 
     mounted() {
