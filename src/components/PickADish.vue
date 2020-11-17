@@ -1,622 +1,562 @@
 <template>
- 
-<div v-if="dataLoaded">
-<div class="card-body">
-  <div v-if="user" class="alert alert-info" role="alert">You are logged in!</div>
-</div>
- <div> 
-    <div v-if="!dataLoaded">
-      <v-container style="height: 400px;">
-      <v-row
-        class="fill-height"
-        align-content="center"
-        justify="center"
-      >
-        <v-col
-          class="subtitle-1 text-center"
-          cols="12"
-        >
-          Loading data...
-        </v-col>
-        <v-col cols="6">
-          <v-progress-linear
-            color="deep-purple accent-4"
-            indeterminate
-            rounded
-            height="6"
-          ></v-progress-linear>
-        </v-col>
-      </v-row>
-    </v-container>
- </div>
- <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
-   <!-- // get height of each element  -->
-   <v-lazy
-          v-model="isActiveMonday"
-          :options="{
-            threshold: .5
-          }"
-          min-height="200"
-          transition="fade-transition"
-        >
-    <v-timeline-item
-      color="purple lighten-2"
-      fill-dot
-      right
-    >
-    <template v-slot:opposite>
-        <h1>Monday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="purple lighten-2">   
-           <v-icon
-            dark
-            size="42"
-            class="mr-4"
-          >
-            fas fa-egg
-          </v-icon>  
-          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[0]].dish_name}}</h3>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[0]].ingredients}}
+  <div v-if="dataLoaded">
+    <div class="card-body">
+      <div v-if="user" class="alert alert-info" role="alert">
+        You are logged in!
+      </div>
+    </div>
+    <div>
+      <div v-if="!dataLoaded">
+        <v-container style="height: 400px">
+          <v-row class="fill-height" align-content="center" justify="center">
+            <v-col class="subtitle-1 text-center" cols="12">
+              Loading data...
             </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-            <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-            <v-dialog
-              v-model="dialog0"
-              width="500"
-            >
-              <template v-slot:activator="{ on }">
-              <v-icon v-on="on" size="64">mdi-calendar-text</v-icon>
-              </template>
-
-              <v-card>
-                <v-card-title class="headline grey lighten-2 mb-4">
-                  <span>{{ dishes[dishesIndexList[0]].dish_name}} - przepis</span>
-                </v-card-title>
-                <v-card-text>
-                  {{ dishes[dishesIndexList[0]].recipe}}
-                </v-card-text>
-              </v-card> 
-            </v-dialog> 
-            </div>            
+            <v-col cols="6">
+              <v-progress-linear
+                color="deep-purple accent-4"
+                indeterminate
+                rounded
+                height="6"
+              ></v-progress-linear>
             </v-col>
           </v-row>
         </v-container>
-      </v-card>
-    </v-timeline-item>
-    </v-lazy>
-    <v-lazy
-          v-model="isActiveTuesday"
+      </div>
+      <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
+        <!-- // get height of each element  -->
+        <v-lazy
+          v-model="isActive.isActiveMonday"
           :options="{
-            threshold: .5
+            threshold: 0.5,
           }"
           min-height="200"
           transition="fade-transition"
         >
-    <v-timeline-item
-      color="amber lighten-1"
-      fill-dot
-      left
-    >
-     <template v-slot:opposite>
-        <h1>Tuesday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="amber lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[1]].dish_name}}</h3>
-          <v-icon
-            dark
-            size="42"
-          >fas fa-drumstick-bite</v-icon>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[1]].ingredients}}
-            </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-            <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-        <v-dialog
-          v-model="dialog1"
-          width="500"
-        >
-          <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-          </template>
-
-          <v-card>
-            <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[dishesIndexList[1]].dish_name}} - przepis</span>
-            </v-card-title>
-            <v-card-text>
-              {{ dishes[dishesIndexList[1]].recipe}}
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-    </div>
-            </v-col>
-          </v-row>
-        </v-container> 
-      </v-card>
-    </v-timeline-item>
-    </v-lazy>
-    <v-lazy
-          v-model="isActiveWednesday"
-          :options="{
-            threshold: .5
-          }"
-          min-height="200"
-          transition="fade-transition"
-        >
-    <v-timeline-item
-      color="cyan lighten-1"
-      fill-dot
-      right
-    >
-     <template v-slot:opposite>
-        <h1>Wednesday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="cyan lighten-1">
-          <v-icon
-            class="mr-4"
-            dark
-            size="42"
-          >
-            fas fa-pizza-slice
-          </v-icon>
-          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[2]].dish_name}}</h3>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[2]].ingredients}}
-            </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-               <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-        <v-dialog
-          v-model="dialog2"
-          width="500"
-        >
-          <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-          </template>
-
-          <v-card>
-            <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[dishesIndexList[2]].dish_name}} - przepis</span>
-            </v-card-title>
-            <v-card-text>
-              {{ dishes[dishesIndexList[2]].recipe}}
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-    </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-timeline-item>
-</v-lazy>
-<v-lazy
-          v-model="isActiveThursday"
-          :options="{
-            threshold: .5
-          }"
-          min-height="200"
-          transition="fade-transition"
-        >
-    <v-timeline-item
-      color="red lighten-1"
-      fill-dot
-      left
-    >
-     <template v-slot:opposite>
-        <h1>Thursday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="red lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[3]].dish_name}}</h3>
-          <v-icon
-            dark
-            size="42"
-          >
-            fas fa-hamburger
-          </v-icon>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[3]].ingredients}}
-            </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-                <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-        <v-dialog
-          v-model="dialog3"
-          width="500"
-        >
-          <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-          </template>
-
-          <v-card>
-            <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[dishesIndexList[3]].dish_name}} - przepis</span>
-            </v-card-title>
-            <v-card-text>
-              {{ dishes[dishesIndexList[3]].recipe}}
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-    </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-timeline-item>
-</v-lazy>
- <v-lazy
-          v-model="isActiveFriday"
-          :options="{
-            threshold: .5
-          }"
-          min-height="200"
-          transition="fade-transition"
-        >
-    <v-timeline-item
-      color="green lighten-1"
-      fill-dot
-      right
-    >
-     <template v-slot:opposite>
-        <h1>Friday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="green lighten-1">
-          <v-icon
-            class="mr-4"
-            dark
-            size="42"
-          >
-            fas fa-fish
-          </v-icon>
-          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[4]].dish_name}}</h3>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[4]].ingredients}}
-            </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-                <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-        <v-dialog
-          v-model="dialog4"
-          width="500"
-        >
-          <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-          </template>
-
-          <v-card>
-            <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[dishesIndexList[4]].dish_name}} - przepis</span>
-            </v-card-title>
-            <v-card-text>
-              {{ dishes[dishesIndexList[4]].recipe}}
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-    </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-timeline-item>
-    </v-lazy>
-    <v-lazy
-          v-model="isActiveSaturday"
-          :options="{
-            threshold: .5
-          }"
-          min-height="200"
-          transition="fade-transition"
-        >
-    <v-timeline-item
-      color="pink lighten-1"
-      fill-dot
-      left
-    >
-     <template v-slot:opposite>
-        <h1>Saturday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="pink lighten-1 justify-end">
-          <h3 class="mr-4 white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[5]].dish_name}}</h3>
-          <v-icon
-            dark
-            size="42"
-          >
-            fas fa-hotdog
-          </v-icon>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[5]].ingredients}}
-            </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-               <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-        <v-dialog
-          v-model="dialog5"
-          width="500"
-        >
-          <template v-slot:activator="{ on, attrs }">
-          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-          </template>
-
-          <v-card>
-            <v-card-title class="headline grey lighten-2 mb-4">
-              <span>{{ dishes[dishesIndexList[5]].dish_name}} - przepis</span>
-            </v-card-title>
-            <v-card-text>
-              {{ dishes[dishesIndexList[5]].recipe}}
-            </v-card-text>
-          </v-card>
-        </v-dialog>
-    </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-timeline-item>
+          <v-timeline-item color="purple lighten-2" fill-dot right>
+            <template v-slot:opposite>
+              <h1>Monday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="purple lighten-2">
+                <v-icon dark size="42" class="mr-4"> fas fa-egg </v-icon>
+                <h3 class="white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[0]].dish_name }}
+                </h3>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[0]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog0" width="500">
+                        <template v-slot:activator="{ on }">
+                          <v-icon v-on="on" size="64">mdi-calendar-text</v-icon>
+                        </template>
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[0]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[0]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
         </v-lazy>
-    <v-lazy
-          v-model="isActiveSunday"
+        <v-lazy
+          v-model="isActive.isActiveTuesday"
           :options="{
-            threshold: .5
+            threshold: 0.5,
           }"
           min-height="200"
           transition="fade-transition"
         >
-        <v-timeline-item
-      color="yellow"
-      fill-dot
-      right
-    >
-     <template v-slot:opposite>
-        <h1>Sunday</h1>
-      </template>
-      <v-card>
-        <v-card-title class="yellow">
-          <v-icon
-            class="mr-4"
-            dark
-            size="42"
-          >
-            fas fa-carrot
-          </v-icon>
-          <h3 class="white--text font-weight-medium flex-nowrap">{{ dishes[dishesIndexList[6]].dish_name}}</h3>
-        </v-card-title>
-        <v-container>
-          <v-row>
-            <v-col cols="12" md="8">
-              <h3>Składniki</h3>
-              <v-divider class="my-2"></v-divider>
-              {{ dishes[dishesIndexList[6]].ingredients}}
-            </v-col>
-            <v-col
-              class="hidden-sm-and-down text-right"
-              md="4"
-            >
-            <h3 class="align-right">Przepis</h3>
-              <v-divider class="my-2"></v-divider>
-            <div class="align-right">
-            <v-dialog
-              v-model="dialog6"
-              width="500"
-            >
-              <template v-slot:activator="{ on, attrs }">
-              <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
-              </template>
+          <v-timeline-item color="amber lighten-1" fill-dot left>
+            <template v-slot:opposite>
+              <h1>Tuesday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="amber lighten-1 justify-end">
+                <h3 class="mr-4 white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[1]].dish_name }}
+                </h3>
+                <v-icon dark size="42">fas fa-drumstick-bite</v-icon>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[1]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog1" width="500">
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-icon v-bind="attrs" v-on="on" size="64"
+                            >mdi-calendar-text</v-icon
+                          >
+                        </template>
 
-              <v-card>
-                <v-card-title class="headline grey lighten-2 mb-4">
-                  <span>{{ dishes[dishesIndexList[6]].dish_name}} - przepis</span>
-                </v-card-title>
-                <v-card-text>
-                  {{ dishes[dishesIndexList[6]].recipe}}
-                </v-card-text>
-              </v-card>
-            </v-dialog>
-          </div>
-            </v-col>
-          </v-row>
-        </v-container>
-      </v-card>
-    </v-timeline-item>
-    </v-lazy>
-  </v-timeline>
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[1]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[1]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+        <v-lazy
+          v-model="isActive.isActiveWednesday"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition="fade-transition"
+        >
+          <v-timeline-item color="cyan lighten-1" fill-dot right>
+            <template v-slot:opposite>
+              <h1>Wednesday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="cyan lighten-1">
+                <v-icon class="mr-4" dark size="42">
+                  fas fa-pizza-slice
+                </v-icon>
+                <h3 class="white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[2]].dish_name }}
+                </h3>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[2]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog2" width="500">
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-icon v-bind="attrs" v-on="on" size="64"
+                            >mdi-calendar-text</v-icon
+                          >
+                        </template>
+
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[2]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[2]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+        <v-lazy
+          v-model="isActive.isActiveThursday"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition="fade-transition"
+        >
+          <v-timeline-item color="red lighten-1" fill-dot left>
+            <template v-slot:opposite>
+              <h1>Thursday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="red lighten-1 justify-end">
+                <h3 class="mr-4 white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[3]].dish_name }}
+                </h3>
+                <v-icon dark size="42"> fas fa-hamburger </v-icon>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[3]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog3" width="500">
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-icon v-bind="attrs" v-on="on" size="64"
+                            >mdi-calendar-text</v-icon
+                          >
+                        </template>
+
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[3]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[3]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+        <v-lazy
+          v-model="isActive.isActiveFriday"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition="fade-transition"
+        >
+          <v-timeline-item color="green lighten-1" fill-dot right>
+            <template v-slot:opposite>
+              <h1>Friday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="green lighten-1">
+                <v-icon class="mr-4" dark size="42"> fas fa-fish </v-icon>
+                <h3 class="white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[4]].dish_name }}
+                </h3>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[4]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog4" width="500">
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-icon v-bind="attrs" v-on="on" size="64"
+                            >mdi-calendar-text</v-icon
+                          >
+                        </template>
+
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[4]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[4]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+        <v-lazy
+          v-model="isActive.isActiveSaturday"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition="fade-transition"
+        >
+          <v-timeline-item color="pink lighten-1" fill-dot left>
+            <template v-slot:opposite>
+              <h1>Saturday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="pink lighten-1 justify-end">
+                <h3 class="mr-4 white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[5]].dish_name }}
+                </h3>
+                <v-icon dark size="42"> fas fa-hotdog </v-icon>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[5]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog5" width="500">
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-icon v-bind="attrs" v-on="on" size="64"
+                            >mdi-calendar-text</v-icon
+                          >
+                        </template>
+
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[5]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[5]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+        <v-lazy
+          v-model="isActive.isActiveSunday"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition="fade-transition"
+        >
+          <v-timeline-item color="yellow" fill-dot right>
+            <template v-slot:opposite>
+              <h1>Sunday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="yellow">
+                <v-icon class="mr-4" dark size="42"> fas fa-carrot </v-icon>
+                <h3 class="white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[6]].dish_name }}
+                </h3>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[6]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog6" width="500">
+                        <template v-slot:activator="{ on, attrs }">
+                          <v-icon v-bind="attrs" v-on="on" size="64"
+                            >mdi-calendar-text</v-icon
+                          >
+                        </template>
+
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2 mb-4">
+                            <span
+                              >{{ dishes[dishesIndexList[6]].dish_name }} -
+                              przepis</span
+                            >
+                          </v-card-title>
+                          <v-card-text>
+                            {{ dishes[dishesIndexList[6]].recipe }}
+                          </v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+      </v-timeline>
+    </div>
   </div>
- </div>
 </template>
 
 
 <script>
 // import { db } from '@/main'
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 
 export default {
-    data: () => ({
-        selectedDish: {},
-        dialog0: false,
-        dialog1: false,
-        dialog2: false,
-        dialog3: false,
-        dialog4: false,
-        dialog5: false,
-        dialog6: false,
-        dishesIndexList: [],
-        dataLoaded: false,
-        isActiveMonday: false,
-        isActiveTuesday: false,
-        isActiveWednesday: false,
-        isActiveThursday: false,
-        isActiveFriday: false,
-        isActiveSaturday: false,
-        isActiveSunday: false,
-    }),
-
-    mounted() {
-      this.getDishIndexList()
+  data: () => ({
+    selectedDish: {},
+    dialog: {
+      dialog0: false,
+      dialog1: false,
+      dialog2: false,
+      dialog3: false,
+      dialog4: false,
+      dialog5: false,
+      dialog6: false,
     },
+    dishesIndexList: [],
+    dataLoaded: false,
+    isActive: {
+      isActiveMonday: false,
+      isActiveTuesday: false,
+      isActiveWednesday: false,
+      isActiveThursday: false,
+      isActiveFriday: false,
+      isActiveSaturday: false,
+      isActiveSunday: false,
+    }
+  }),
 
-    computed: {
-        ...mapState([
-          'dishes'
-        ]),
+  mounted() {
+    this.getDishIndexList();
+  },
+
+  computed: {
+    ...mapState(["dishes"]),
     ...mapGetters({
-      user: "user"
-    })
-  
+      user: "user",
+    }),
+  },
+
+  methods: {
+    async getDishes() {
+      await this.$store.dispatch("setDishes");
     },
 
-    methods: {
-        async getDishes() {
-          await this.$store.dispatch('setDishes')
-        },
-        
-        pickADishIndexForEachDay(){
-          const numberOfDishes = this.dishes.length
-          const dishIndexNumbers = [];
-          // const vegetarianDishIndexNumbers0 = []
-          const vegetarianDishIndexNumbers = []
-          
-          // Get indexes numbers of all dishes
-          for ( let i = 0; i < numberOfDishes; i++ ) { 
-            dishIndexNumbers.push(i);
-          }
-         
-          // for ( let i = 0; i < numberOfDishes; i++ ) { 
-          //   if ( this.dishes[i].dish_type === "vegetarian_dish")
-          //   vegetarianDishIndexNumbers0.push(i);
-          // }
-          // console.log("@vegetarianDishIndexNumbers0")
-          // console.log(vegetarianDishIndexNumbers0)
+    pickADishIndexForEachDay() {
+      const numberOfDishes = this.dishes.length;
+      const dishIndexNumbers = [];
+      // const vegetarianDishIndexNumbers0 = []
+      const vegetarianDishIndexNumbers = [];
 
-          // Get indexes number of vegetarian dishes
-          this.dishes.forEach((dish, index) =>  {
-            if (dish.dish_type === "vegetarian_dish"){
-              vegetarianDishIndexNumbers.push(index)
-            }
-          })
-          
-          const randomVegetarianDishIndexNumber = vegetarianDishIndexNumbers[Math.floor(Math.random() * (vegetarianDishIndexNumbers.length))];
-                    
-          // Add indexes for Monday to Sunday
-          while (this.dishesIndexList.length < 7){
-            const randomDishIndex = dishIndexNumbers[Math.floor(Math.random() * dishIndexNumbers.length)];
-            if(dishIndexNumbers[randomDishIndex] !==  randomVegetarianDishIndexNumber){     
-            this.dishesIndexList.push(randomDishIndex);
-            dishIndexNumbers.splice(randomDishIndex, 1);
-            }
-            else continue
-         
-          }
-          //Replace index for Friday
-          this.dishesIndexList.splice(4, 1, randomVegetarianDishIndexNumber);    
+      // Get indexes numbers of all dishes
+      for (let i = 0; i < numberOfDishes; i++) {
+        dishIndexNumbers.push(i);
+      }
 
-          this.dataLoaded = true;
-          return this.dishesIndexList;
-          },  
+      // for ( let i = 0; i < numberOfDishes; i++ ) {
+      //   if ( this.dishes[i].dish_type === "vegetarian_dish")
+      //   vegetarianDishIndexNumbers0.push(i);
+      // }
+      // console.log("@vegetarianDishIndexNumbers0")
+      // console.log(vegetarianDishIndexNumbers0)
 
-        async getDishIndexList(){
-            await this.getDishes()
-            this.pickADishIndexForEachDay()
-          }, 
+      // Get indexes number of vegetarian dishes
+      this.dishes.forEach((dish, index) => {
+        if (dish.dish_type === "vegetarian_dish") {
+          vegetarianDishIndexNumbers.push(index);
+        }
+      });
 
-        // editDish(ev) {
-        //     this.currentlyEditing = ev.id
-        //   },
+      const randomVegetarianDishIndexNumber =
+        vegetarianDishIndexNumbers[
+          Math.floor(Math.random() * vegetarianDishIndexNumbers.length)
+        ];
 
-        // updateDish(ev) {
-        //   db.collection('dishes').doc(this.currentlyEditing).update({
-        //     details: ev.details
-        //   })
-        //   this.currentlyEditing = null
-        // },
+      // Add indexes for Monday to Sunday
+      while (this.dishesIndexList.length < 7) {
+        const randomDishIndex =
+          dishIndexNumbers[Math.floor(Math.random() * dishIndexNumbers.length)];
+        if (
+          dishIndexNumbers[randomDishIndex] !== randomVegetarianDishIndexNumber
+        ) {
+          this.dishesIndexList.push(randomDishIndex);
+          dishIndexNumbers.splice(randomDishIndex, 1);
+        } else continue;
+      }
+      //Replace index for Friday
+      this.dishesIndexList.splice(4, 1, randomVegetarianDishIndexNumber);
 
-        // async deleteDish(ev) {
-        //   await db.collection('dishes').doc(ev).delete()
-        //   this.selectedOpen = false,
-        //   this.getDishes()
-        // },
+      this.dataLoaded = true;
+      return this.dishesIndexList;
+    },
 
-        // showDish({ nativeEvent, dish }) {
-        //   const open = () => {
-        //     this.selectedDish = dish
-        //     this.selectedElement = nativeEvent.target
-        //     setTimeout(() => this.selectedOpen = true, 10)
-        //   }
-        //   if (this.selectedOpen) {
-        //     this.selectedOpen = false
-        //     setTimeout(open, 10)
-        //   } else {
-        //     open()
-        //   }
-        //   nativeEvent.stopPropagation()
-        // },
-      },
-}
+    async getDishIndexList() {
+      await this.getDishes();
+      this.pickADishIndexForEachDay();
+    },
+
+    // editDish(ev) {
+    //     this.currentlyEditing = ev.id
+    //   },
+
+    // updateDish(ev) {
+    //   db.collection('dishes').doc(this.currentlyEditing).update({
+    //     details: ev.details
+    //   })
+    //   this.currentlyEditing = null
+    // },
+
+    // async deleteDish(ev) {
+    //   await db.collection('dishes').doc(ev).delete()
+    //   this.selectedOpen = false,
+    //   this.getDishes()
+    // },
+
+    // showDish({ nativeEvent, dish }) {
+    //   const open = () => {
+    //     this.selectedDish = dish
+    //     this.selectedElement = nativeEvent.target
+    //     setTimeout(() => this.selectedOpen = true, 10)
+    //   }
+    //   if (this.selectedOpen) {
+    //     this.selectedOpen = false
+    //     setTimeout(open, 10)
+    //   } else {
+    //     open()
+    //   }
+    //   nativeEvent.stopPropagation()
+    // },
+  },
+};
 </script>
 <style scoped>
-  .v-progress-circular {
-    margin: 1rem;
-  }
+.v-progress-circular {
+  margin: 1rem;
+}
 </style>
