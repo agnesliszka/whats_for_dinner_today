@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md navbar-light navbar-laravel alert-success">
-    <div class="container ">
-      <router-link to="/" class="navbar-brand">Pick a dish appplication</router-link>
+    <div class="container">
+      <h1 class="navbar-brand">Pick a dish appplication</h1>
       <button
         class="navbar-toggler"
         type="button"
@@ -17,7 +17,10 @@
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav ml-auto">
           <template v-if="user.loggedIn">
-            <div class="nav-item" style="display: flex; align-items: center;">{{user.data.displayName}}</div>
+            <div
+              class="nav-item"
+              style="display: flex; align-items: center;"
+            >{{user.data.displayName}}</div>
             <li class="nav-item">
               <a class="nav-link" @click.prevent="signOut">Sign out</a>
             </li>
