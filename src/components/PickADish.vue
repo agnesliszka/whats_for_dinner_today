@@ -1,29 +1,23 @@
 <template>
-  <div v-if="dataLoaded">
+  <div>
     <div class="card-body">
-      <div v-if="user" class="alert alert-info" role="alert">
-        You are logged in!
-      </div>
+      <button
+        class="btn btn-primary"
+        @click="pickADishIndexForEachDay"
+      >Pick a dish for each day of the week</button>
     </div>
     <div>
       <div v-if="!dataLoaded">
         <v-container style="height: 400px">
           <v-row class="fill-height" align-content="center" justify="center">
-            <v-col class="subtitle-1 text-center" cols="12">
-              Loading data...
-            </v-col>
+            <v-col class="subtitle-1 text-center" cols="12">Loading data...</v-col>
             <v-col cols="6">
-              <v-progress-linear
-                color="deep-purple accent-4"
-                indeterminate
-                rounded
-                height="6"
-              ></v-progress-linear>
+              <v-progress-linear color="deep-purple accent-4" indeterminate rounded height="6"></v-progress-linear>
             </v-col>
           </v-row>
         </v-container>
       </div>
-      <v-timeline :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
+      <v-timeline v-if="dataLoaded" :dense="$vuetify.breakpoint.smAndDown" class="mr-7 ml-7">
         <!-- // get height of each element  -->
         <v-lazy
           v-model="isActive.isActiveMonday"
@@ -39,10 +33,10 @@
             </template>
             <v-card>
               <v-card-title class="purple lighten-2">
-                <v-icon dark size="42" class="mr-4"> fas fa-egg </v-icon>
-                <h3 class="white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[0]].dish_name }}
-                </h3>
+                <v-icon dark size="42" class="mr-4">fas fa-egg</v-icon>
+                <h3
+                  class="white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[0]].dish_name }}</h3>
               </v-card-title>
               <v-container>
                 <v-row>
@@ -61,14 +55,12 @@
                         </template>
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[0]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[0]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[0]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[0]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -92,9 +84,9 @@
             </template>
             <v-card>
               <v-card-title class="amber lighten-1 justify-end">
-                <h3 class="mr-4 white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[1]].dish_name }}
-                </h3>
+                <h3
+                  class="mr-4 white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[1]].dish_name }}</h3>
                 <v-icon dark size="42">fas fa-drumstick-bite</v-icon>
               </v-card-title>
               <v-container>
@@ -110,21 +102,17 @@
                     <div class="align-right">
                       <v-dialog v-model="dialog.dialog1" width="500">
                         <template v-slot:activator="{ on, attrs }">
-                          <v-icon v-bind="attrs" v-on="on" size="64"
-                            >mdi-calendar-text</v-icon
-                          >
+                          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
                         </template>
 
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[1]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[1]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[1]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[1]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -148,12 +136,10 @@
             </template>
             <v-card>
               <v-card-title class="cyan lighten-1">
-                <v-icon class="mr-4" dark size="42">
-                  fas fa-pizza-slice
-                </v-icon>
-                <h3 class="white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[2]].dish_name }}
-                </h3>
+                <v-icon class="mr-4" dark size="42">fas fa-pizza-slice</v-icon>
+                <h3
+                  class="white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[2]].dish_name }}</h3>
               </v-card-title>
               <v-container>
                 <v-row>
@@ -168,21 +154,17 @@
                     <div class="align-right">
                       <v-dialog v-model="dialog.dialog2" width="500">
                         <template v-slot:activator="{ on, attrs }">
-                          <v-icon v-bind="attrs" v-on="on" size="64"
-                            >mdi-calendar-text</v-icon
-                          >
+                          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
                         </template>
 
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[2]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[2]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[2]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[2]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -206,10 +188,10 @@
             </template>
             <v-card>
               <v-card-title class="red lighten-1 justify-end">
-                <h3 class="mr-4 white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[3]].dish_name }}
-                </h3>
-                <v-icon dark size="42"> fas fa-hamburger </v-icon>
+                <h3
+                  class="mr-4 white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[3]].dish_name }}</h3>
+                <v-icon dark size="42">fas fa-hamburger</v-icon>
               </v-card-title>
               <v-container>
                 <v-row>
@@ -224,21 +206,17 @@
                     <div class="align-right">
                       <v-dialog v-model="dialog.dialog3" width="500">
                         <template v-slot:activator="{ on, attrs }">
-                          <v-icon v-bind="attrs" v-on="on" size="64"
-                            >mdi-calendar-text</v-icon
-                          >
+                          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
                         </template>
 
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[3]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[3]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[3]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[3]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -262,10 +240,10 @@
             </template>
             <v-card>
               <v-card-title class="green lighten-1">
-                <v-icon class="mr-4" dark size="42"> fas fa-fish </v-icon>
-                <h3 class="white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[4]].dish_name }}
-                </h3>
+                <v-icon class="mr-4" dark size="42">fas fa-fish</v-icon>
+                <h3
+                  class="white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[4]].dish_name }}</h3>
               </v-card-title>
               <v-container>
                 <v-row>
@@ -280,21 +258,17 @@
                     <div class="align-right">
                       <v-dialog v-model="dialog.dialog4" width="500">
                         <template v-slot:activator="{ on, attrs }">
-                          <v-icon v-bind="attrs" v-on="on" size="64"
-                            >mdi-calendar-text</v-icon
-                          >
+                          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
                         </template>
 
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[4]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[4]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[4]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[4]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -318,10 +292,10 @@
             </template>
             <v-card>
               <v-card-title class="pink lighten-1 justify-end">
-                <h3 class="mr-4 white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[5]].dish_name }}
-                </h3>
-                <v-icon dark size="42"> fas fa-hotdog </v-icon>
+                <h3
+                  class="mr-4 white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[5]].dish_name }}</h3>
+                <v-icon dark size="42">fas fa-hotdog</v-icon>
               </v-card-title>
               <v-container>
                 <v-row>
@@ -336,21 +310,17 @@
                     <div class="align-right">
                       <v-dialog v-model="dialog.dialog5" width="500">
                         <template v-slot:activator="{ on, attrs }">
-                          <v-icon v-bind="attrs" v-on="on" size="64"
-                            >mdi-calendar-text</v-icon
-                          >
+                          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
                         </template>
 
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[5]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[5]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[5]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[5]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -374,10 +344,10 @@
             </template>
             <v-card>
               <v-card-title class="yellow">
-                <v-icon class="mr-4" dark size="42"> fas fa-carrot </v-icon>
-                <h3 class="white--text font-weight-medium flex-nowrap">
-                  {{ dishes[dishesIndexList[6]].dish_name }}
-                </h3>
+                <v-icon class="mr-4" dark size="42">fas fa-carrot</v-icon>
+                <h3
+                  class="white--text font-weight-medium flex-nowrap"
+                >{{ dishes[dishesIndexList[6]].dish_name }}</h3>
               </v-card-title>
               <v-container>
                 <v-row>
@@ -392,21 +362,17 @@
                     <div class="align-right">
                       <v-dialog v-model="dialog.dialog6" width="500">
                         <template v-slot:activator="{ on, attrs }">
-                          <v-icon v-bind="attrs" v-on="on" size="64"
-                            >mdi-calendar-text</v-icon
-                          >
+                          <v-icon v-bind="attrs" v-on="on" size="64">mdi-calendar-text</v-icon>
                         </template>
 
                         <v-card>
                           <v-card-title class="headline grey lighten-2 mb-4">
-                            <span
-                              >{{ dishes[dishesIndexList[6]].dish_name }} -
-                              przepis</span
-                            >
+                            <span>
+                              {{ dishes[dishesIndexList[6]].dish_name }} -
+                              przepis
+                            </span>
                           </v-card-title>
-                          <v-card-text>
-                            {{ dishes[dishesIndexList[6]].recipe }}
-                          </v-card-text>
+                          <v-card-text>{{ dishes[dishesIndexList[6]].recipe }}</v-card-text>
                         </v-card>
                       </v-dialog>
                     </div>
@@ -437,7 +403,7 @@ export default {
       dialog3: false,
       dialog4: false,
       dialog5: false,
-      dialog6: false,
+      dialog6: false
     },
     dishesIndexList: [],
     dataLoaded: false,
@@ -448,7 +414,7 @@ export default {
       isActiveThursday: false,
       isActiveFriday: false,
       isActiveSaturday: false,
-      isActiveSunday: false,
+      isActiveSunday: false
     }
   }),
 
@@ -459,8 +425,8 @@ export default {
   computed: {
     ...mapState(["dishes"]),
     ...mapGetters({
-      user: "user",
-    }),
+      user: "user"
+    })
   },
 
   methods: {
@@ -469,6 +435,7 @@ export default {
     },
 
     pickADishIndexForEachDay() {
+      this.dishesIndexList = [];
       const numberOfDishes = this.dishes.length;
       const dishIndexNumbers = [];
       // const vegetarianDishIndexNumbers0 = []
@@ -483,8 +450,6 @@ export default {
       //   if ( this.dishes[i].dish_type === "vegetarian_dish")
       //   vegetarianDishIndexNumbers0.push(i);
       // }
-      // console.log("@vegetarianDishIndexNumbers0")
-      // console.log(vegetarianDishIndexNumbers0)
 
       // Get indexes number of vegetarian dishes
       this.dishes.forEach((dish, index) => {
@@ -499,8 +464,9 @@ export default {
         ];
 
       // Add indexes for Monday to Sunday
+      let randomDishIndex = [];
       while (this.dishesIndexList.length < 7) {
-        const randomDishIndex =
+        randomDishIndex =
           dishIndexNumbers[Math.floor(Math.random() * dishIndexNumbers.length)];
         if (
           dishIndexNumbers[randomDishIndex] !== randomVegetarianDishIndexNumber
@@ -517,9 +483,10 @@ export default {
     },
 
     async getDishIndexList() {
+      this.dataLoaded = false;
       await this.getDishes();
       this.pickADishIndexForEachDay();
-    },
+    }
 
     // editDish(ev) {
     //     this.currentlyEditing = ev.id
@@ -552,7 +519,7 @@ export default {
     //   }
     //   nativeEvent.stopPropagation()
     // },
-  },
+  }
 };
 </script>
 <style scoped>
