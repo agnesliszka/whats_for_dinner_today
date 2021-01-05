@@ -1,6 +1,6 @@
 <template>
   <v-parallax
-    height="655"
+    height="665"
     dark
     src="https://previews.123rf.com/images/mizina/mizina1810/mizina181000004/109293919-autumn-festive-thanksgiving-dinner-background-with-turkey-and-traditional-sides-dishes-around-wooden.jpg"
   >
