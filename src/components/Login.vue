@@ -85,7 +85,6 @@ export default {
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(this.$router.replace({ name: "pickADish" }))
         .catch(err => {
-          console.log("nie wlazl");
           this.$router.replace({ name: "main" });
           this.error = err.message;
         });
