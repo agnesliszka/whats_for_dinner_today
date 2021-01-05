@@ -1,31 +1,37 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Login from '../components/Login'
-import Register from '../components/Register'
-import PickADish from '../components/PickADish'
+import Vue from "vue";
+import Router from "vue-router";
+import Login from "../components/Login.vue";
+import Register from "../components/Register.vue";
+import PickADish from "../components/PickADish.vue";
+import Main from "../components/Main.vue";
 
-Vue.use(Router)
+Vue.use(Router);
 
 const router = new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [
-        {
-        path: '/login',
-        name: 'login',
-        component: Login
+  mode: "history",
+  base: process.env.BASE_URL,
+  routes: [
+    {
+      path: "/",
+      name: "main",
+      component: Main,
     },
     {
-        path: '/register',
-        name: 'register',
-        component: Register
+      path: "/login",
+      name: "login",
+      component: Login,
     },
     {
-        path: '/pickADish',
-        name: 'pickADish',
-        component: PickADish
-    }
-]
+      path: "/register",
+      name: "register",
+      component: Register,
+    },
+    {
+      path: "/pickADish",
+      name: "pickADish",
+      component: PickADish,
+    },
+  ],
 });
 
-export default router
+export default router;
