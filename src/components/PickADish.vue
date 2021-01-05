@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color:#E8E8E8">
     <div class="card-body">
       <button
         class="btn btn-primary"
