@@ -8,7 +8,7 @@
       >
         Pick a dish for each day of the week
       </v-btn>
-      <v-dialog v-model="dialogButton" max-width="500px">
+      <v-dialog v-model="dialogField" max-width="500px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
             New Item
@@ -24,31 +24,12 @@
               <v-row>
                 <v-col cols="12" sm="6" md="4">
                   <v-text-field
-                    v-model="editedItem.id"
-                    label="id"
-                  ></v-text-field>
-                  <v-text-field
-                    v-model="editedItem.dish_name"
-                    label="Dish name"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    v-model="editedItem.dish_type"
-                    label="Dish type"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    v-model="editedItem.ingredients"
-                    label="Ingredients"
-                  ></v-text-field>
-                </v-col>
-                <v-col cols="12" sm="6" md="4">
-                  <v-text-field
-                    v-model="editedItem.recipe"
-                    label="Recipe"
-                  ></v-text-field>
+                    v-for="(value, key, index) in editedItem"
+                    :key="index"
+                    v-model="editedItem[key]"
+                    :label="key"
+                  >
+                  </v-text-field>
                 </v-col>
               </v-row>
             </v-container>
@@ -490,7 +471,7 @@ import { db } from "@/main";
 export default {
   data: () => ({
     selectedDish: {},
-    dialogButton: false,
+    dialogField: false,
     editedIndex: -1,
     editedItem: {
       id: new Date().getTime(),
@@ -543,7 +524,7 @@ export default {
   },
 
   watch: {
-    dialogButton(val) {
+    dialogField(val) {
       val || this.close();
     },
   },
@@ -607,23 +588,17 @@ export default {
       this.pickADishIndexForEachDay();
     },
 
-    close() {
-      this.dialog = false;
-      this.$nextTick(() => {
-        this.editedItem = Object.assign({}, this.defaultItem);
-        this.editedIndex = -1;
-      });
-    },
-
-    save() {
-      this.updateDish(this.editedItem);
+    async save() {
+      await db.collection("dishes").add(this.editedItem);
       console.log(this.dishes);
       this.close();
     },
 
-    async updateDish(ev) {
-      await db.collection("dishes").add({
-        ev,
+    close() {
+      this.dialogField = false;
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.editedIndex = -1;
       });
     },
 
