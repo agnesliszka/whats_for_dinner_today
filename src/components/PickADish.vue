@@ -27,7 +27,7 @@
                     v-for="(value, key, index) in editedItem"
                     :key="index"
                     v-model="editedItem[key]"
-                    :label="key"
+                    :label="editedItemTitle[key]"
                   >
                   </v-text-field>
                 </v-col>
@@ -479,6 +479,13 @@ export default {
       dish_type: "",
       ingredients: "",
       recipe: "",
+    },
+    editedItemTitle: {
+      id: "ID",
+      dish_name: "Dish name",
+      dish_type: "Dish type",
+      ingredients: "Ingredients",
+      recipe: "Recipe",
     },
     defaultItem: {
       id: new Date().getTime(),
