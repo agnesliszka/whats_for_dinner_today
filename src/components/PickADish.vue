@@ -485,6 +485,7 @@
 // import { db } from '@/main'
 import { mapState } from "vuex";
 import { mapGetters } from "vuex";
+import { db } from "@/main";
 
 export default {
   data: () => ({
@@ -615,56 +616,21 @@ export default {
     },
 
     save() {
-      if (this.editedIndex > -1) {
-        Object.assign(
-          this.dishes.dishesIndexList[this.editedIndex],
-          this.editedItem
-        );
-      } else {
-        //     let snapshot = await db.collection('dishes').post()
-        // const dishes = []
-        // snapshot.forEach(doc => {
-        //   let appData = doc.data()
-        //   appData.id = doc.id
-        //   dishes.push(appData)
-        // })
-
-        this.dishes.push(this.editedItem);
-        console.log(this.dishes);
-      }
+      this.updateDish(this.editedItem);
+      console.log(this.dishes);
       this.close();
     },
 
-    // editDish(ev) {
-    //     this.currentlyEditing = ev.id
-    //   },
-
-    // updateDish(ev) {
-    //   db.collection('dishes').doc(this.currentlyEditing).update({
-    //     details: ev.details
-    //   })
-    //   this.currentlyEditing = null
-    // },
+    async updateDish(ev) {
+      await db.collection("dishes").add({
+        ev,
+      });
+    },
 
     // async deleteDish(ev) {
     //   await db.collection('dishes').doc(ev).delete()
     //   this.selectedOpen = false,
     //   this.getDishes()
-    // },
-
-    // showDish({ nativeEvent, dish }) {
-    //   const open = () => {
-    //     this.selectedDish = dish
-    //     this.selectedElement = nativeEvent.target
-    //     setTimeout(() => this.selectedOpen = true, 10)
-    //   }
-    //   if (this.selectedOpen) {
-    //     this.selectedOpen = false
-    //     setTimeout(open, 10)
-    //   } else {
-    //     open()
-    //   }
-    //   nativeEvent.stopPropagation()
     // },
   },
 };
