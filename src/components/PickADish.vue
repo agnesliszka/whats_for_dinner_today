@@ -66,8 +66,64 @@
         :dense="$vuetify.breakpoint.smAndDown"
         class="mr-7 ml-7"
       >
-        <!-- // get height of each element  -->
         <v-lazy
+          v-for="(value, key, index) in daysOfTheWeekData"
+          :key="index"
+          v-model="isActive.isActiveMonday"
+          :options="{
+            threshold: 0.5,
+          }"
+          min-height="200"
+          transition="fade-transition"
+        >
+          <v-timeline-item color="purple lighten-2" fill-dot right>
+            <template v-slot:opposite>
+              {{ key }}
+              <h1>Monday</h1>
+            </template>
+            <v-card>
+              <v-card-title class="purple lighten-2">
+                <v-icon dark size="42" class="mr-4">fas fa-egg</v-icon>
+                <h3 class="white--text font-weight-medium flex-nowrap">
+                  {{ dishes[dishesIndexList[0]].dish_name }}
+                </h3>
+              </v-card-title>
+              <v-container>
+                <v-row>
+                  <v-col cols="12" md="8">
+                    <h3>Składniki</h3>
+                    <v-divider class="my-2"></v-divider>
+                    {{ dishes[dishesIndexList[0]].ingredients }}
+                  </v-col>
+                  <v-col class="hidden-sm-and-down text-right" md="4">
+                    <h3 class="align-right">Przepis</h3>
+                    <v-divider class="my-2"></v-divider>
+                    <div class="align-right">
+                      <v-dialog v-model="dialog.dialog0" width="500">
+                        <template v-slot:activator="{ on }">
+                          <v-icon v-on="on" size="64">mdi-calendar-text</v-icon>
+                        </template>
+                        <v-card>
+                          <v-card-title class="headline grey lighten-2">
+                            <span>
+                              {{ dishes[dishesIndexList[0]].dish_name }} -
+                              przepis
+                            </span>
+                          </v-card-title>
+                          <v-card-text>{{
+                            dishes[dishesIndexList[0]].recipe
+                          }}</v-card-text>
+                        </v-card>
+                      </v-dialog>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-container>
+            </v-card>
+          </v-timeline-item>
+        </v-lazy>
+        <!-- // get height of each element  -->
+        <!-- <v-lazy
           v-model="isActive.isActiveMonday"
           :options="{
             threshold: 0.5,
@@ -455,7 +511,7 @@
               </v-container>
             </v-card>
           </v-timeline-item>
-        </v-lazy>
+        </v-lazy>-->
       </v-timeline>
     </div>
   </div>
@@ -514,6 +570,106 @@ export default {
       isActiveSaturday: false,
       isActiveSunday: false,
     },
+    daysOfTheWeekData: [
+      {
+        Monday: {
+          model: "isActive.isActiveMonday",
+          color: "purple lighten-2",
+          fill_dot: "right",
+          day: "Monday",
+          class: "purple lighten-2",
+          dish: this.dishes[this.dishesIndexList[0]].dish_name,
+          icon: "fas fa-egg",
+          ingredients: this.dishes[this.dishesIndexList[0]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[0]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[0]].recipe,
+        },
+      },
+      {
+        Tuesday: {
+          model: "isActive.isActiveTuesday",
+          color: "amber lighten-1",
+          fill_dot: "left",
+          day: "Tuesday",
+          class: "amber lighten-1 justify-end",
+          dish: this.dishes[this.dishesIndexList[1]].dish_name,
+          icon: "fas fa-drumstick-bite",
+          ingredients: this.dishes[this.dishesIndexList[1]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[1]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[1]].recipe,
+        },
+      },
+      {
+        Wednesday: {
+          model: "isActive.isActiveWednesday",
+          color: "cyan lighten-1",
+          fill_dot: "right",
+          day: "Wednesday",
+          class: "cyan lighten-1",
+          dish: this.dishes[this.dishesIndexList[2]].dish_name,
+          icon: "fas fa-pizza-slice",
+          ingredients: this.dishes[this.dishesIndexList[2]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[2]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[2]].recipe,
+        },
+      },
+      {
+        Thursday: {
+          model: "isActive.isActiveThursday",
+          color: "red lighten-1",
+          fill_dot: "left",
+          day: "Thursday",
+          class: "red lighten-1 justify-end",
+          dish: this.dishes[this.dishesIndexList[3]].dish_name,
+          icon: "fas fa-hamburger",
+          ingredients: this.dishes[this.dishesIndexList[3]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[3]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[3]].recipe,
+        },
+      },
+      {
+        Friday: {
+          model: "isActive.isActiveFriday",
+          color: "green lighten-1",
+          fill_dot: "right",
+          day: "Friday",
+          class: "green lighten-1",
+          dish: this.dishes[this.dishesIndexList[4]].dish_name,
+          icon: "fas fa-fish",
+          ingredients: this.dishes[this.dishesIndexList[4]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[4]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[4]].recipe,
+        },
+      },
+      {
+        Saturday: {
+          model: "isActive.isActiveSaturday",
+          color: "pink lighten-1",
+          fill_dot: "left",
+          day: "Saturday",
+          class: "pink lighten-1 justify-end",
+          dish: this.dishes[this.dishesIndexList[5]].dish_name,
+          icon: "fas fa-hotdog",
+          ingredients: this.dishes[this.dishesIndexList[5]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[5]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[5]].recipe,
+        },
+      },
+      {
+        Sunday: {
+          model: "isActive.isActiveSunday",
+          color: "yellow",
+          fill_dot: "right",
+          day: "Sunday",
+          class: "yellow",
+          dish: this.dishes[this.dishesIndexList[6]].dish_name,
+          icon: "fas fa-carrot",
+          ingredients: this.dishes[this.dishesIndexList[6]].ingredients,
+          dish_name: this.dishes[this.dishesIndexList[6]].dish_name,
+          recipe: this.dishes[this.dishesIndexList[6]].recipe,
+        },
+      },
+    ],
   }),
 
   mounted() {
