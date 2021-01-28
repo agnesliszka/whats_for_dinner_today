@@ -117,6 +117,7 @@ export default {
             });
         })
         .catch(err => {
+          this.$router.replace({ name: "main" });
           this.error = err.message;
         });
     }
