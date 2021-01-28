@@ -30,6 +30,10 @@
                     :label="editedItemTitle[key]"
                   >
                   </v-text-field>
+                  <v-select
+                    :items="editedItemDishType"
+                    :label="editedItemTitleDishType"
+                  ></v-select>
                 </v-col>
               </v-row>
             </v-container>
@@ -130,7 +134,6 @@
   </div>
 </template>
 
-
 <script>
 // import { db } from '@/main'
 import { mapState } from "vuex";
@@ -142,17 +145,22 @@ export default {
     selectedDish: {},
     dialogField: false,
     editedIndex: -1,
+    editedItemTitleDishType: "Dish type",
+    editedItemDishType: [
+      "fried_meat_dish",
+      "cooked_meat_dish",
+      "vegetarian_dish",
+      "baked_meat_dish",
+    ],
     editedItem: {
       id: new Date().getTime(),
       dish_name: "",
-      dish_type: "",
       ingredients: "",
       recipe: "",
     },
     editedItemTitle: {
       id: "ID",
       dish_name: "Dish name",
-      dish_type: "Dish type",
       ingredients: "Ingredients",
       recipe: "Recipe",
     },
