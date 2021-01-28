@@ -3,6 +3,14 @@
     height="665"
     src="https://bloximages.chicago2.vip.townnews.com/postregister.com/content/tncms/assets/v3/editorial/8/58/85810653-a184-5a1b-939f-c3e17e47e0ff/5bef4e5449b9b.image.jpg?resize=1200%2C800"
   >
+    <!-- <v-row align="center" justify="center"> -->
+    <!-- <v-col class="text-center" cols="12" -->
+    <h5 style="display: flex; justify-content: center;">
+      Incorrect login or password. Please try one more time.
+    </h5>
+    <!-- </v-col
+      > -->
+    <!-- </v-row> -->
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-8">
@@ -89,7 +97,7 @@ export default {
         .signInWithEmailAndPassword(this.form.email, this.form.password)
         .then(this.$router.replace({ name: "pickADish" }))
         .catch((err) => {
-          this.$router.replace({ name: "loginError" });
+          this.$router.replace({ name: "login" });
           this.error = err.message;
         });
     },

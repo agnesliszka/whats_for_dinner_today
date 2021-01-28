@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Login from "../components/Login.vue";
+import LoginError from "../components/LoginError.vue";
 import Register from "../components/Register.vue";
 import PickADish from "../components/PickADish.vue";
 import Main from "../components/Main.vue";
@@ -20,6 +21,11 @@ const router = new Router({
       path: "/login",
       name: "login",
       component: Login,
+    },
+    {
+      path: "/loginError",
+      name: "loginError",
+      component: LoginError,
     },
     {
       path: "/register",
