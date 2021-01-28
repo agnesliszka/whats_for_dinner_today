@@ -1,5 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-md navbar-light navbar-laravel alert-success">
+  <nav
+    class="navbar navbar-expand-md navbar-light navbar-laravel alert-success"
+  >
     <div class="container">
       <h1 class="navbar-brand">Pick a dish appplication</h1>
       <button
@@ -17,10 +19,9 @@
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav ml-auto">
           <template v-if="user.loggedIn">
-            <div
-              class="nav-item"
-              style="display: flex; align-items: center;"
-            >{{user.data.displayName}}</div>
+            <div class="nav-item" style="display: flex; align-items: center;">
+              {{ user.data.displayName }}
+            </div>
             <li class="nav-item">
               <a class="nav-link" @click.prevent="signOut">Sign out</a>
             </li>
@@ -44,8 +45,11 @@ import firebase from "firebase";
 export default {
   computed: {
     ...mapGetters({
-      user: "user"
-    })
+      user: "user",
+    }),
+  },
+  mounted() {
+    this.signOut();
   },
   methods: {
     signOut() {
@@ -54,10 +58,10 @@ export default {
         .signOut()
         .then(() => {
           this.$router.replace({
-            name: "main"
+            name: "main",
           });
         });
-    }
-  }
+    },
+  },
 };
 </script>
