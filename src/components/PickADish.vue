@@ -167,9 +167,9 @@ export default {
     defaultItem: {
       id: new Date().getTime(),
       dish_name: "",
-      dish_type: "",
       ingredients: "",
       recipe: "",
+      dish_type: "",
     },
     dishesIndexList: [],
     dataLoaded: false,
